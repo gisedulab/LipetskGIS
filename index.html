@@ -7,8 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
 
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>Четыре измерения Липецка</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +31,40 @@
   </head>
 
   <body id="page-top">
+    
+    <style>
+
+    #menu {
+        position: absolute;
+        background: #fff;
+        padding: 1px;
+		font: 14px 'Open Sans', sans-serif;
+        
+    }
+
+body {
+    overflow: hidden;
+}
+
+body * {
+   -webkit-touch-callout: none;
+     -webkit-user-select: none;
+        -moz-user-select: none;
+         -ms-user-select: none;
+             user-select: none;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+	
+</style>
+    
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -72,14 +113,53 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>About Grayscale</h2>
-            <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-            <p>This theme features stock photos by
-              <a href="http://gratisography.com/">Gratisography</a>
-              along with a custom Google Maps skin courtesy of
-              <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-            <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+            
+            <div id='before' class='map'></div>
+<div id='after' class='map'></div>
+<div id='menu'>
+    <input id='cj8olhxhm8uyi2rped6x90i3d' type='radio' style='height:10px' name='rtoggle' value='cj8olhxhm8uyi2rped6x90i3d' checked='checked'>
+    <label for='cj8olhxhm8uyi2rped6x90i3d'>basic</label>
+	<br />
+    <input id='cj9bjgi1g57ug2ro842dliyo9' type='radio' style='height:10px' name='rtoggle' value='cj9bjgi1g57ug2ro842dliyo9'>
+    <label for='cj9bjgi1g57ug2ro842dliyo9'>satellite</label>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
+var beforeMap = new mapboxgl.Map({
+    container: 'before',
+    style: 'mapbox://styles/gisedulab/cj8olhxhm8uyi2rped6x90i3d',
+    center: [39.594,52.607],
+    zoom: 14
+});
+
+var afterMap = new mapboxgl.Map({
+    container: 'after',
+    style: 'mapbox://styles/gisedulab/cj9bdu3zz07ca2rp0y9brw1iz',
+    center: [39.594,52.607],
+    zoom: 14
+});
+
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    beforeMap.setStyle('mapbox://styles/gisedulab/' + layerId);
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
+
+
+var map = new mapboxgl.Compare(beforeMap, afterMap, {
+    // Set this to enable comparing two maps by mouse movement:
+    // mousemove: true
+});
+</script>
+            
+            
           </div>
         </div>
       </div>
