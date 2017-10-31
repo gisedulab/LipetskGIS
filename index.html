@@ -4,18 +4,19 @@
   <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1,,maximum-scale=1, user-scalable=no, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
-    <style>
+	
+	<!-- MB -->
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet'/>
+	 <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #map { position:relative; top:0; bottom:0; width:100%; }
     </style>
 
-    <title>Четыре измерения Липецка</title>
+    <title>Grayscale - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,40 +32,6 @@
   </head>
 
   <body id="page-top">
-    
-    <style>
-
-    #menu {
-        position: absolute;
-        background: #fff;
-        padding: 1px;
-		font: 14px 'Open Sans', sans-serif;
-        
-    }
-
-body {
-    overflow: hidden;
-}
-
-body * {
-   -webkit-touch-callout: none;
-     -webkit-user-select: none;
-        -moz-user-select: none;
-         -ms-user-select: none;
-             user-select: none;
-}
-
-.map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-}
-	
-</style>
-    
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -114,52 +81,19 @@ body * {
         <div class="row">
           <div class="col-lg-8 mx-auto">
             
-            <div id='before' class='map'></div>
-<div id='after' class='map'></div>
-<div id='menu'>
-    <input id='cj8olhxhm8uyi2rped6x90i3d' type='radio' style='height:10px' name='rtoggle' value='cj8olhxhm8uyi2rped6x90i3d' checked='checked'>
-    <label for='cj8olhxhm8uyi2rped6x90i3d'>basic</label>
-	<br />
-    <input id='cj9bjgi1g57ug2ro842dliyo9' type='radio' style='height:10px' name='rtoggle' value='cj9bjgi1g57ug2ro842dliyo9'>
-    <label for='cj9bjgi1g57ug2ro842dliyo9'>satellite</label>
-</div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
-var beforeMap = new mapboxgl.Map({
-    container: 'before',
-    style: 'mapbox://styles/gisedulab/cj8olhxhm8uyi2rped6x90i3d',
-    center: [39.594,52.607],
-    zoom: 14
-});
-
-var afterMap = new mapboxgl.Map({
-    container: 'after',
-    style: 'mapbox://styles/gisedulab/cj9bdu3zz07ca2rp0y9brw1iz',
-    center: [39.594,52.607],
-    zoom: 14
-});
-
-
-var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
-
-function switchLayer(layer) {
-    var layerId = layer.target.id;
-    beforeMap.setStyle('mapbox://styles/gisedulab/' + layerId);
-}
-
-for (var i = 0; i < inputs.length; i++) {
-    inputs[i].onclick = switchLayer;
-}
-
-
-var map = new mapboxgl.Compare(beforeMap, afterMap, {
-    // Set this to enable comparing two maps by mouse movement:
-    // mousemove: true
-});
-</script>
-            
-            
+			<div id='map'></div>
+			
+			<!-- MB -->
+			<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
+			var map = new mapboxgl.Map({
+				container: 'map', // container id
+				style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+				center: [-74.50, 40], // starting position [lng, lat]
+				zoom: 9 // starting zoom
+			});
+			</script>
+						
           </div>
         </div>
       </div>
