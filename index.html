@@ -32,6 +32,31 @@
   </head>
 
   <body id="page-top">
+	  
+<style>
+
+    #menu1 {
+        position: relative;
+        background: #fff;
+        padding: 1px;
+		font: 14px 'Open Sans', sans-serif;
+        
+    }
+
+body {
+    overflow: hidden;
+}
+
+body * {
+   -webkit-touch-callout: none;
+     -webkit-user-select: none;
+        -moz-user-select: none;
+         -ms-user-select: none;
+             user-select: none;
+}
+	.map {position:relative; top:0; bottom:0;  width:100%; height:900px}
+</style>
+	  
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -143,29 +168,7 @@
       </div>
     </section>
 
-<style>
 
-    #menu {
-        position: absolute;
-        background: #fff;
-        padding: 1px;
-		font: 14px 'Open Sans', sans-serif;
-        
-    }
-
-body {
-    overflow: hidden;
-}
-
-body * {
-   -webkit-touch-callout: none;
-     -webkit-user-select: none;
-        -moz-user-select: none;
-         -ms-user-select: none;
-             user-select: none;
-}
-	.map {position:relative; top:0; bottom:0;  width:100%; height:900px}
-</style>
 
 <section id="GIS">
 	 <!-- MB -->        
@@ -174,7 +177,7 @@ body * {
 
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
-<div id='menu'>
+<div id='menu1'>
     <input id='cj8olhxhm8uyi2rped6x90i3d' type='radio' style='height:10px' name='rtoggle' value='cj8olhxhm8uyi2rped6x90i3d' checked='checked'>
     <label for='cj8olhxhm8uyi2rped6x90i3d'>basic</label>
 	<br />
@@ -198,7 +201,7 @@ var afterMap = new mapboxgl.Map({
 });
 
 
-var layerList = document.getElementById('menu');
+var layerList = document.getElementById('menu1');
 var inputs = layerList.getElementsByTagName('input');
 
 function switchLayer(layer) {
