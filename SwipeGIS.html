@@ -11,6 +11,9 @@
         #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
 
+	    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -27,6 +30,19 @@
 
     #menu {
         position: absolute;
+		left: 0px;
+		top: 0px;
+		height: 100%;
+        background: #000;
+        padding: 7px;
+		font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-weight: 700;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+    }
+
+	#menu2 {
+        position: absolute;
 		right: 0px;
 		top: 0px;
 		height: 100%;
@@ -36,9 +52,9 @@
 		font-weight: 700;
 		letter-spacing: 1px;
 		text-transform: uppercase; 
-		float:right;
     }
-
+	
+	
 	body {
 		overflow: hidden;
 	}
@@ -65,13 +81,28 @@
 
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
+
 <div id='menu'>
-    <input id='cj8olhxhm8uyi2rped6x90i3d' type='radio' style='height:10px' name='rtoggle' value='cj8olhxhm8uyi2rped6x90i3d' checked='checked'>
+	<a href="index.html">О проекте</a>
+	<br>
+	<br>
+    <input id='cj8olhxhm8uyi2rped6x90i3d' type='radio'  name='rtoggle' value='cj8olhxhm8uyi2rped6x90i3d' checked='checked'>
     <label for='cj8olhxhm8uyi2rped6x90i3d'> basic</label>
 	<br>
-    <input id='cj9bjgi1g57ug2ro842dliyo9' type='radio' style='height:10px' name='rtoggle' value='cj9bjgi1g57ug2ro842dliyo9'>
+    <input id='cj9bjgi1g57ug2ro842dliyo9' type='radio'  name='rtoggle' value='cj9bjgi1g57ug2ro842dliyo9'>
     <label for='cj9bjgi1g57ug2ro842dliyo9'>satellite</label>
 </div>
+
+<div id='menu2'>
+    <input id='cj9bdu3zz07ca2rp0y9brw1iz' type='radio'  name='rtoggle2' value='cj9bdu3zz07ca2rp0y9brw1iz' checked='checked'>
+    <label for='cj9bdu3zz07ca2rp0y9brw1iz'>План 1797 г.</label>
+	<br>
+    <input id='cj9bjgi1g57ug2ro842dliyo9' type='radio'  name='rtoggle2' value='cj9bjgi1g57ug2ro842dliyo9'>
+    <label for='cj9bjgi1g57ug2ro842dliyo9'>План 1805 г.</label>
+</div>
+
+
+
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
 var beforeMap = new mapboxgl.Map({
@@ -101,11 +132,24 @@ for (var i = 0; i < inputs.length; i++) {
     inputs[i].onclick = switchLayer;
 }
 
+var layerList2 = document.getElementById('menu2');
+var inputs2 = layerList2.getElementsByTagName('input');
+
+function switchLayer2(layer2) {
+    var layerId2 = layer2.target.id;
+    afterMap.setStyle('mapbox://styles/gisedulab/' + layerId2);
+}
+
+for (var i = 0; i < inputs2.length; i++) {
+    inputs2[i].onclick = switchLayer2;
+}
 
 var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
 });
+
+
 </script>
 
 </body>
