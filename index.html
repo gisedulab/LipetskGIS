@@ -13,7 +13,7 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet'/>
 	 <style>
         body { margin:0; padding:0; }
-        #map { position:relative; top:0; bottom:0; width:100%; }
+        #map { position:relative; top:0; bottom:0;  width:100%; height:900px}
     </style>
 
     <title>Grayscale - Start Bootstrap Theme</title>
@@ -36,7 +36,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">4D Липецка</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -44,13 +44,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="#about">О проекте</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#download">Download</a>
+              <a class="nav-link js-scroll-trigger" href="#download">Скачать</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="#contact">Авторы</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#GIS">ГИС</a>
             </li>
           </ul>
         </div>
@@ -63,10 +66,11 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 mx-auto">
-              <h1 class="brand-heading">Grayscale</h1>
-              <p class="intro-text">A free, responsive, one page Bootstrap theme.
-                <br>Created by Start Bootstrap.</p>
-              <a href="#about" class="btn btn-circle js-scroll-trigger">
+              <h1 class="brand-heading">ЧЕТЫРЕ ИЗМЕРЕНИЯ ЛИПЕЦКА</h1>
+              <p class="intro-text">Историческая географическая информационная система.
+                <br>Проект подготовлен: А.Ю. Карандеев, С.А. Михайлов.
+				<br>При участии: М.В. Ивашов, Д.С. Климов, А.А. Найденов, Ю.Н. Тихонов</p>
+              <a href="#GIS" class="btn btn-circle js-scroll-trigger">
                 <i class="fa fa-angle-double-down animated"></i>
               </a>
             </div>
@@ -77,26 +81,20 @@
 
     <!-- About Section -->
     <section id="about" class="content-section text-center">
-      <div class="container">
+	<div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            
-			<div id='map'></div>
-			
-			<!-- MB -->
-			<script>
-			mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
-			var map = new mapboxgl.Map({
-				container: 'map', // container id
-				style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-				center: [-74.50, 40], // starting position [lng, lat]
-				zoom: 9 // starting zoom
-			});
-			</script>
-						
+            <h2>About Grayscale</h2>
+            <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
+              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+            <p>This theme features stock photos by
+              <a href="http://gratisography.com/">Gratisography</a>
+              along with a custom Google Maps skin courtesy of
+              <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
+            <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
           </div>
         </div>
-      </div>
+      </div>       					
     </section>
 
     <!-- Download Section -->
@@ -143,10 +141,21 @@
         </div>
       </div>
     </section>
-
-    <!-- Map Section -->
-    <div id="map"></div>
-
+	
+	<section id="GIS">
+	 <!-- MB -->        
+	<div id='map'></div>			
+	<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
+			var map = new mapboxgl.Map({
+				container: 'map', // container id
+				style: 'mapbox://styles/gisedulab/cj8olhxhm8uyi2rped6x90i3d', // stylesheet location
+				center: [39.594,52.607], // starting position [lng, lat]
+				zoom: 14, // starting zoom							
+			});
+	</script>
+	</section>
+	
     <!-- Footer -->
     <footer>
       <div class="container text-center">
@@ -161,8 +170,6 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.min.js"></script>
