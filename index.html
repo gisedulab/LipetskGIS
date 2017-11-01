@@ -142,20 +142,81 @@
         </div>
       </div>
     </section>
-	
-	<section id="GIS">
+
+<style>
+
+    #menu {
+        position: absolute;
+        background: #fff;
+        padding: 1px;
+		font: 14px 'Open Sans', sans-serif;
+        
+    }
+
+body {
+    overflow: hidden;
+}
+
+body * {
+   -webkit-touch-callout: none;
+     -webkit-user-select: none;
+        -moz-user-select: none;
+         -ms-user-select: none;
+             user-select: none;
+}
+
+</style>
+
+<section id="GIS">
 	 <!-- MB -->        
-	<div id='map'></div>			
-	<script>
-			mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
-			var map = new mapboxgl.Map({
-				container: 'map', // container id
-				style: 'mapbox://styles/gisedulab/cj8olhxhm8uyi2rped6x90i3d', // stylesheet location
-				center: [39.594,52.607], // starting position [lng, lat]
-				zoom: 14, // starting zoom							
-			});
-	</script>
-	</section>
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
+
+<div id='before' class='map'></div>
+<div id='after' class='map'></div>
+<div id='menu'>
+    <input id='cj8olhxhm8uyi2rped6x90i3d' type='radio' style='height:10px' name='rtoggle' value='cj8olhxhm8uyi2rped6x90i3d' checked='checked'>
+    <label for='cj8olhxhm8uyi2rped6x90i3d'>basic</label>
+	<br />
+    <input id='cj9bjgi1g57ug2ro842dliyo9' type='radio' style='height:10px' name='rtoggle' value='cj9bjgi1g57ug2ro842dliyo9'>
+    <label for='cj9bjgi1g57ug2ro842dliyo9'>satellite</label>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
+var beforeMap = new mapboxgl.Map({
+    container: 'before',
+    style: 'mapbox://styles/gisedulab/cj8olhxhm8uyi2rped6x90i3d',
+    center: [39.594,52.607],
+    zoom: 14
+});
+
+var afterMap = new mapboxgl.Map({
+    container: 'after',
+    style: 'mapbox://styles/gisedulab/cj9bdu3zz07ca2rp0y9brw1iz',
+    center: [39.594,52.607],
+    zoom: 14
+});
+
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    beforeMap.setStyle('mapbox://styles/gisedulab/' + layerId);
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
+
+
+var map = new mapboxgl.Compare(beforeMap, afterMap, {
+    // Set this to enable comparing two maps by mouse movement:
+    // mousemove: true
+});
+</script>
+</section>
 	
     <!-- Footer -->
     <footer>
