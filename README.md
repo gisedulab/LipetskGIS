@@ -1,6 +1,6 @@
 ## About
 
-HTML Template https://github.com/BlackrockDigital/startbootstrap-grayscale)
+HTML Template https://github.com/BlackrockDigital/startbootstrap-grayscale
 
 ## Copyright and License
 
