@@ -41,7 +41,7 @@ a {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  color: #42DCA3; }
+  color: #fff; }
   a:focus, a:hover {
     text-decoration: none;
     color: #1d9b6c; }
@@ -143,6 +143,9 @@ a {
 .content-section {
   padding-top: 150px;
   padding-bottom: 150px; }
+
+.contentabout-section {
+    background: url("../img/intro-about.jpg") no-repeat bottom center scroll;}
 
 .download-section {
   color: white;
