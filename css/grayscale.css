@@ -145,7 +145,13 @@ a {
   padding-bottom: 150px; }
 
 .contentabout-section {
-    background: url("../img/intro-about.jpg") no-repeat bottom center scroll;}
+    color: white;
+    background: url("../img/intro-about.jpg") no-repeat center center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;}
 
 .download-section {
   color: white;
