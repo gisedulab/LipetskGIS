@@ -123,11 +123,11 @@ a {
         font-size: 22px; } }
 
 .btn-circle {
-  font-size: 26px;
-  width: 55px;
-  height: 55px;
+  font-size: 20px;
+  width: 43px;
+  height: 43px;
   margin-top: 15px;
-  line-height: 45px;
+  line-height: 30px;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
