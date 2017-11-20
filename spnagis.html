@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Охрана природы</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+
+<style>
+#map {
+    position: fixed;
+    width:50%;
+}
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 700px;
+}
+</style>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='SPNA6' class='active'>
+      <small id="4DLipetsk">
+          <a href='index.html#about'>4D Липецка</a>
+      </small>
+        <h3>Липецкий заказник</h3>
+        <p>Государственный природный зоологический заказник «Липецкий»
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст</p>
+    </section>
+    <section id='SPNA147'>
+        <br>
+        <h3>Нижний парк</h3>
+        <p>Памятник природы регионального значения «Нижний парк»
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст
+        <br>Текст</p>
+    </section>
+    <section id='SPNA148'>
+        <br>
+        <h3>Верхний парк</h3>
+        <p>Памятник природы регионального значения «Верхний парк»
+        </p>
+    </section>
+    <section id='SPNA146'>
+        <br>
+        <h3>Низовья Каменного лога</h3>
+        <p>Памятник природы регионального значения «Низовья Каменного лога»
+        </p>
+    </section>
+    <section id='SPNA112'>
+      <br>
+        <h3>Сурки</h3>
+        <p>Памятник природы регионального значения «Сурки»
+        </p>
+    </section>
+    <section id='SPNA48'>
+      <br>
+        <h3>Сосновый бор</h3>
+        <p>Памятник природы регионального значения «Сосновый бор»
+        </p>
+    </section>
+    <section id='SPNA149'>
+      <br>
+        <h3>Митрохин угол</h3>
+        <p>Памятник природы регионального значения «Митрохин угол»
+        </p>
+    </section>
+    <section id='SPNA18'>
+      <br>
+        <h3>Ольшаник с колонией серых цапель у с. Сселки</h3>
+        <p>Памятник природы регионального значения «Ольшаник с колонией серых цапель у с. Сселки»
+        </p>
+    </section>
+    <section id='SPNA50'>
+      <br>
+        <h3>Река Двуречка</h3>
+        <p>Памятник природы регионального значения «Река Двуречка»
+        </p>
+    </section>
+    <section id='SPNA923'>
+      <br>
+        <h3>Парк «Быханов сад»</h3>
+        <p>Городская рекреационная зона «Парк «Быханов сад»
+        </p>
+    </section>
+    <section id='SPNA258'>
+      <br>
+        <h3>«Урочище «Сосновый лес»</h3>
+        <p>Городская рекреационная зона «Урочище «Сосновый лес»
+        </p>
+    </section>
+    <section id='SPNA101'>
+      <br>
+        <h3>Дуб на ул. Первомайской</h3>
+        <p>Охраняемый природный объект «Дуб на ул. Первомайской»
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+        </p>
+    </section>
+    <section id='SPNA103'>
+      <br>
+        <h3>Вяз на ул. Ленина</h3>
+        <p>Охраняемый природный объект «Вяз на ул. Ленина»
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+        </p>
+    </section>
+    <section id='SPNA357'>
+      <br>
+        <h3>Бархат амурский у Евдокиевской церкви</h3>
+        <p>Охраняемый природный объект «Бархат амурский у Евдокиевской церкви»
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+        </p>
+    </section>
+    <section id='SPNA359'>
+      <br>
+        <h3>Дуб у школы №47</h3>
+        <p>Охраняемый природный объект «Дуб у школы №47»
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+          <br>Текст
+        </p>
+        <small id="citation">
+            <a href='index.html#about'>4D Липецка</a>
+
+        </small>
+    </section>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/gisedulab/cja2nfi5n0wsi2slinbn79rld',
+    center: [39.672571, 52.547628],
+    zoom: 10.45,
+    bearing: 0,
+    pitch: 0
+});
+
+var chapters = {
+    'SPNA6': {
+      center: [39.672571, 52.547628],
+      zoom: 10,
+      bearing: 0,
+      pitch: 0
+    },
+    'SPNA147': {
+        bearing: 0,
+        center: [39.604655, 52.607038],
+        zoom: 15,
+        pitch: 0
+    },
+    'SPNA148': {
+        bearing: 0,
+        center: [39.611147, 52.613671],
+        zoom: 15,
+        pitch: 0
+    },
+    'SPNA146': {
+        bearing: 0,
+        center: [39.578554,52.608225],
+        zoom: 14,
+        pitch: 0
+    },
+    'SPNA112': {
+        bearing: 0,
+        center: [39.536662,52.664616],
+        zoom: 13,
+        pitch: 0
+    },
+    'SPNA48': {
+        bearing: 0,
+        center: [39.627320,52.508136],
+        zoom: 13,
+        pitch: 0
+    },
+    'SPNA149': {
+        bearing: 0,
+        center: [39.698761,52.616993],
+        zoom: 13,
+        pitch: 0
+    },
+    'SPNA18': {
+        bearing: 0,
+        center: [39.721124,52.629256],
+        zoom: 13,
+        pitch: 0
+    },
+    'SPNA50': {
+        bearing: 0,
+        center: [39.629471,52.471777],
+        zoom: 12,
+        pitch: 0
+    },
+    'SPNA923': {
+        bearing: 0,
+        center: [39.590056,52.618756],
+        zoom: 15,
+        pitch: 0
+    },
+    'SPNA258': {
+        bearing: 0,
+        center: [39.509964,52.595029],
+        zoom: 16,
+        pitch: 0
+    },
+    'SPNA101': {
+        bearing: 0,
+        center: [39.583018,52.602477],
+        zoom: 18,
+        pitch: 0
+    },
+    'SPNA103': {
+        bearing: 0,
+        center: [39.604405,52.611046],
+        zoom: 18,
+        pitch: 0
+    },
+    'SPNA357': {
+        bearing: 0,
+        center: [39.595793,52.618661],
+        zoom: 18,
+        pitch: 0
+    },
+    'SPNA359': {
+        bearing: 0,
+        center: [39.564902,52.614428],
+        zoom: 18,
+        pitch: 0
+    },
+};
+
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'SPNA6';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+
+    map.setFilter('spna_layer', ['==', 'Id',chapterName]);
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+
+</script>
+
+</body>
+</html>
