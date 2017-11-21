@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Охрана природы</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+<style>
+#map {
+    position: fixed;
+    width:50%;
+}
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 900px;
+}
+</style>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='archeo1' class='active'>
+      <small id="4DLipetsk">
+          <h3><a href='index.html#about'>4D Липецка</a></h3><br>
+      </small>
+        <h3>Липецкое городище</h3><br>
+        <h5>Памятник выявлен в 1924 году директором Липецкого краеведческого музея А.П. Труновым.
+          Впервые археологически исследован в 1960 году Верхне-Донской археологической экспедицией В.П. Левенка.
+          Городище неоднократно подвергалось археологическим разведкам и раскопкам (В.И. Матвеева, А.Н. Бессуднов, В.А. Чивилев, И.Е. Бирюков и др.),
+          в результате чего были выявлены материалы эпох бронзы, раннего железного века, XIV-XV вв. и XVIII-XX вв.</h5>
+    </section>
+    <section id='archeo2'>
+        <br>
+        <h3>Сарматский могильник по ул. Петровский проезд</h3><br>
+        <h5>Памятник входит в состав объекта археологического наследия «Культурный слой исторической части г. Липецк».
+          Выявлен в 2016 году в результате археологических раскопок, проведенных экспедицией ОБУК «Госдирекция» под руководством А.А. Клюкойтя.
+          В ходе работ было выявлено несколько погребений, которые датируются сарматским периодом эпохи раннего железного века. Помимо этого выявлены более современные материалы XVIII-XX вв.</h5>
+    </section>
+    <section id='archeo3'>
+        <br>
+        <h3>Сырское городище</h3><br>
+        <h5>Памятник открыт в 1988 г. А.Н. Бессудновым, раскапывался с 1993-1995, 1997-2000 годы И.Е. Бирюковым, осматривался в 2011 г. А.Н. Голотвиным.
+          В ходе работ обнаружена лепная и гончарная керамика, находки из кости, камня, глины, металла.
+          Изучены линии укреплений, несколько построек и хозяйственных ям. Выявленные материалы относятся к эпохе раннего железного века.
+        </h5>
+    </section>
+    <section id='archeo4'>
+        <br>
+        <h3>Липецкое Озеро</h3><br>
+        <h5>Выявлен в 1968 году А.Ю. Клоковым, с этого времени и до 1980-х годов им проводился сбор подъемного материала, в результате чего им было собрано большое количество материалов VII-II тыс. до н.э.,
+          в том числе значительно количество орудий и украшений из кости.
+          Памятник также изучался в 2000-е годы в результате чего были выявлены похожие материалы.
+        </h5>
+    </section>
+    <section id='archeo5'>
+      <br>
+        <h3>Поселение Коровино-1</h3><br>
+        <h5>Памятник открыт в 1982 году А.Ю. Клоковым, впоследствии изучался А.Н. Бессудновым и И.Е. Бирюковым.
+          В результате проведенных работ были выявлены материалы эпох бронзы и раннего железного века.
+        </h5>
+        <small id="citation">
+            <br><h3><a href='index.html#about'>4D Липецка</a></h3>
+        </small>
+    </section>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/gisedulab/cja9pw9v21qle2rnx3zj7zsqo',
+    center: [39.589336, 52.608592],
+    zoom: 15,
+    bearing: 0,
+    pitch: 0
+});
+
+var chapters = {
+    'archeo1': {
+      center: [39.589336, 52.608592],
+      zoom: 15,
+      bearing: 0,
+      pitch: 0
+    },
+    'archeo2': {
+        bearing: 0,
+        center: [39.598284, 52.606886],
+        zoom: 15,
+        pitch: 0
+    },
+    'archeo3': {
+        bearing: 0,
+        center: [39.543089, 52.563252],
+        zoom: 15,
+        pitch: 0
+    },
+    'archeo4': {
+        bearing: 0,
+        center: [39.591891,52.587729],
+        zoom: 15,
+        pitch: 0
+    },
+    'archeo5': {
+        bearing: 0,
+        center: [39.556847,52.570933],
+        zoom: 15,
+        pitch: 0
+    },
+};
+
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'archeo1';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+
+    map.setFilter('archeo_layer', ['==', 'Idn',chapterName]);
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+
+</script>
+
+</body>
+</html>
