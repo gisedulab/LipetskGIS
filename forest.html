@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Липецкие леса</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+  <style>
+  .map-overlay {
+      font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      position: absolute;
+      width: 25%;
+      top: 0;
+      left: 0;
+      padding: 10px;
+  }
+
+  .map-overlay .map-overlay-inner {
+      background-color: #fff;
+      box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
+      border-radius: 3px;
+      padding: 10px;
+      margin-bottom: 10px;
+  }
+
+  .map-overlay h2 {
+      line-height: 24px;
+      display: block;
+      margin: 0 0 10px;
+  }
+
+
+  .map-overlay input {
+      background-color: transparent;
+      display: inline-block;
+      width: 100%;
+      position: relative;
+      margin: 0;
+      cursor: ew-resize;
+  }
+  </style>
+
+  <div id='map'></div>
+
+  <div class='map-overlay top'>
+      <div class='map-overlay-inner'>
+          <h5>Граница лесов по годам </h5>
+          <label id='year'></label>
+          <input id='slider' type='range' min='0' max='6' step='1' value='0' />
+      </div>
+  </div>
+
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lzZWR1bGFiIiwiYSI6ImNpd3Qza3JmdjAwbWoyeXNhcTZndmw0azMifQ.6w4n3i8uzMkICJDQx8zC7g';
+  var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/gisedulab/cja9wrlns1x8a2rt9n2fasnct',
+      center: [39.703988, 52.560205],
+      zoom: 10
+  });
+
+  var years = [
+      '1797',
+      '1850',
+      '1915',
+      '1941',
+      '1986',
+      '1992',
+      '2011'
+  ];
+
+  function filterBy(year) {
+
+      //var filters = ['==', 'Time', year];
+      //map.setFilter('forestyear', filters);
+
+      // Set the label to the month
+      document.getElementById('year').textContent = years[year];
+  }
+
+</script>
+
+</body>
+</html>
